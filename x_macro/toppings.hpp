@@ -14,6 +14,7 @@
 enum toppings_t {
     TOPPINGS
 };
+#undef TOPPING
 
 /* 
  The x Macro works just as well in C++. The only difference 

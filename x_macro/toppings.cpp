@@ -23,6 +23,13 @@ namespace { // Anonymous namespace! Everything it wraps is functionally 'static'
 
 void print_all_toppings()
 {
+    /* 
+    This is not the most efficient way to print a vector in C++!
+    It'd be better to use a range-based for:
+        for (auto& : toppings)
+    I'm doing it this way to demonstrate that how the enum itself
+    can be used to index it's own name.
+    */
     std::cout << "Toppings:" << std::endl;
     for (auto topping=0; topping<toppings.size(); ++topping) {
         std::cout << toppings[topping] << std::endl;

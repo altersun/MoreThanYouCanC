@@ -26,7 +26,7 @@ typedef enum {
     PIZZA_SIZE(LARGE)
     PIZZA_SIZE(XTRALARGE)
     PIZZA_SIZE(JUMBO)
-} pizza_size t;
+} pizza_size_t;
 
  ...which, since PIZZA_SIZE has been defined to merely take its 
  included string and append a comma, becomes:
