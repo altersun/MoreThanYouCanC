@@ -38,7 +38,9 @@ if __name__ == '__main__':
             sys.exit(1)
 
     # TODO: Get some argparse up in this
-    vid_dir = sys.argv[1]
+    vid_dir = sys.argv[1] 
+    if vid_dir[-1] != '/':
+        vid_dir += '/'
     aspect_ratio = DEFAULT_ASPECT_RATIO
     skip_existing_files = False
 
@@ -77,7 +79,9 @@ if __name__ == '__main__':
         # Use the probe command to get required video data in json form
         vid_data_cmd = PROBE_CMD.split() + [vid_file,]
         vid_data_json = subprocess.run(vid_data_cmd, capture_output=True).stdout
-        
+        print(f'Probe command: {(" ").join(vid_data_cmd)}')
+        print(f'Probe result: {vid_data_json}')
+
         # subprocess.run produces a weird output format, so fix it and parse!
         vid_data_dict = json.loads(vid_data_json.decode('utf-8'))
 
@@ -93,6 +97,7 @@ if __name__ == '__main__':
             continue
         except KeyError as e:
             print('{} Is missing information "{}". Skipping...'.format(vid_file_name, e))
+            print(f'Available data: {vid_data_dict}')
             continue
 
         # Might not need this but can't hurt
